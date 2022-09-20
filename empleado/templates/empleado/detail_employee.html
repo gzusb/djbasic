@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}List Empleados{% endblock title %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+<div class="grid-container">
+    <div class="cell grid-x grid-margin-x align-center" style="margin-top:25px">
+        <div class="card medium-6">
+            <div class="card-divider align-center">
+                <h3>{{ object.first_name }} {{ object.last_name }}</h3>
+            </div>
+            <div class="card-divider align-center">
+                <p>{{ object.get_job_display }}</p>
+            </div>
+        
+            {% if empleado.avatar %}
+            <img src="{{MEDIA_URL}}{{empleado.avatar.url}}" alt="">
+            {% else %}
+            <img src="https://previews.123rf.com/images/urfandadashov/urfandadashov1809/urfandadashov180902667/109317646-profile-pic-vector-icon-isolated-on-transparent-background-profile-pic-logo-concept.jpg" alt="">
+            {% endif %}
+
+            <div class="card-section">
+                <p><label>First Name: </label>{{ empleado.first_name }}</p>
+                <p><label>Last Name: </label>{{ empleado.last_name }}</p>
+                <p><label>Department: </label>{{ empleado.departamento }}</p>
+                <p><label>Skills: </label>{# object.habilidades #}
+                <ul>
+                    {% for h in object.habilidades.all %}
+                    <li>{{ h.habilidad }}</li>
+                    {% endfor %}
+                </ul>
+                </p>
+                <p><label>ID: </label>{{ object.id }}</p>
+            </div>
+        </div>  
+    </div>  
+</div>
+{% endblock content %}

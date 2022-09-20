@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}List Department{% endblock title %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+<div class="grid-container">
+    <div class="grid-x">
+        <div class="cell">
+            <h1>{{title}}</h1>
+            <form class="cell grid-x grid-margin-x" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                <div class="medium-6 cell">
+                    <label>First Name:
+                        {{ form.first_name }}
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Last Name:
+                        {{ form.last_name }}
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Job:
+                        {{ form.job }}
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Department:
+                        {{ form.departamento }}
+                    </label>
+                </div>
+                <div class="medium-12 cell">
+                    <label>Skills:
+                        {{ form.habilidades }}
+                    </label>
+                </div>
+                <div class="medium-12 cell">
+                    <label>Skills:
+                        {{ form.avatar }}
+                    </label>
+                </div>
+                <button type="submit" class="button">Save</button>
+            </form>
+        </div>  
+    </div>  
+</div>
+{% endblock content %}
